@@ -249,213 +249,230 @@ contactForm.addEventListener("submit", (event) => {
 
 document.querySelector("#year").textContent = new Date().getFullYear();
 
-// =========================================
-// AI CHAT ASSISTANT
-// =========================================
+/* =========================================
+   QURAN DELVE AI CHAT
+========================================= */
 
-const aiFloatingButton = document.querySelector("#aiFloatingButton");
+const aiAssistant = document.querySelector(".ai-assistant");
 
 const aiChatWindow = document.querySelector("#aiChatWindow");
 
-const aiMinimize = document.querySelector("#aiMinimize");
+const aiFloatingButton = document.querySelector("#aiFloatingButton");
+
+const aiMinimizeButton = document.querySelector("#aiMinimizeButton");
+
+const aiCloseButton = document.querySelector("#aiCloseButton");
 
 const aiChatBody = document.querySelector("#aiChatBody");
 
-const aiInput = document.querySelector("#aiMessageInput");
+const aiMessageInput = document.querySelector("#aiMessageInput");
 
 const aiSendButton = document.querySelector("#aiSendButton");
 
 const aiTyping = document.querySelector("#aiTyping");
 
-// =========================================
-// OPEN CHAT
-// =========================================
+const aiSuggestions = document.querySelectorAll(".ai-suggestion");
+
+/* =========================================
+   OPEN CHAT
+========================================= */
+
+function openAIChat() {
+  aiAssistant.classList.add("ai-open");
+
+  setTimeout(() => {
+    aiMessageInput.focus();
+  }, 300);
+}
+
+/* =========================================
+   MINIMIZE CHAT
+========================================= */
+
+function minimizeAIChat() {
+  aiAssistant.classList.remove("ai-open");
+}
+
+/* =========================================
+   CLOSE CHAT
+========================================= */
+
+function closeAIChat() {
+  aiAssistant.classList.remove("ai-open");
+}
+
+/* =========================================
+   FLOATING BUTTON
+========================================= */
 
 aiFloatingButton.addEventListener("click", () => {
-  aiChatWindow.classList.remove("minimized");
-
-  aiInput.focus();
+  if (aiAssistant.classList.contains("ai-open")) {
+    minimizeAIChat();
+  } else {
+    openAIChat();
+  }
 });
 
-// =========================================
-// MINIMIZE CHAT
-// =========================================
+/* =========================================
+   MINIMIZE BUTTON
+========================================= */
 
-aiMinimize.addEventListener("click", () => {
-  aiChatWindow.classList.add("minimized");
-});
+aiMinimizeButton.addEventListener("click", minimizeAIChat);
 
-// =========================================
-// ADD MESSAGE
-// =========================================
+/* =========================================
+   CLOSE BUTTON
+========================================= */
+
+aiCloseButton.addEventListener("click", closeAIChat);
+
+/* =========================================
+   ADD USER MESSAGE
+========================================= */
 
 function addUserMessage(message) {
-  const messageElement = document.createElement("div");
+  const messageDiv = document.createElement("div");
 
-  messageElement.className = "ai-message ai-message-user";
+  messageDiv.className = "ai-message ai-user-message";
 
-  messageElement.innerHTML = `
-
-        <div class="message-content">
-
+  messageDiv.innerHTML = `
+        <div class="ai-message-content">
             <p>${escapeHTML(message)}</p>
-
-            <span class="message-time">
-                Just now
-            </span>
-
         </div>
-
     `;
 
-  aiChatBody.appendChild(messageElement);
+  aiChatBody.appendChild(messageDiv);
 
   scrollChatToBottom();
 }
 
-// =========================================
-// ADD AI MESSAGE
-// =========================================
+/* =========================================
+   ADD BOT MESSAGE
+========================================= */
 
 function addBotMessage(message) {
-  const messageElement = document.createElement("div");
+  const messageDiv = document.createElement("div");
 
-  messageElement.className = "ai-message ai-message-bot";
+  messageDiv.className = "ai-message ai-bot-message";
 
-  messageElement.innerHTML = `
-
-        <div class="message-avatar">
-            <i class="bi bi-stars"></i>
+  messageDiv.innerHTML = `
+        <div class="ai-message-avatar">
+            ✦
         </div>
 
-        <div class="message-content">
-
+        <div class="ai-message-content">
             <p>${message}</p>
-
-            <span class="message-time">
-                Just now
-            </span>
-
         </div>
-
     `;
 
-  aiChatBody.appendChild(messageElement);
+  aiChatBody.appendChild(messageDiv);
 
   scrollChatToBottom();
 }
 
-// =========================================
-// TYPING
-// =========================================
-
-function showTyping() {
-  aiTyping.classList.add("show");
-
-  scrollChatToBottom();
-}
-
-function hideTyping() {
-  aiTyping.classList.remove("show");
-}
-
-// =========================================
-// SCROLL CHAT
-// =========================================
+/* =========================================
+   SCROLL CHAT
+========================================= */
 
 function scrollChatToBottom() {
   aiChatBody.scrollTop = aiChatBody.scrollHeight;
 }
 
-// =========================================
-// SIMPLE DEMO AI
-// =========================================
+/* =========================================
+   TYPING INDICATOR
+========================================= */
+
+function showTyping() {
+  aiTyping.classList.add("active");
+
+  scrollChatToBottom();
+}
+
+function hideTyping() {
+  aiTyping.classList.remove("active");
+}
+
+/* =========================================
+   DEMO AI RESPONSE
+========================================= */
 
 function generateDemoResponse(message) {
   const text = message.toLowerCase();
 
   if (text.includes("worship") || text.includes("ibadah")) {
     return `
-            Worship in the Quran is connected with devotion,
-            obedience, remembrance and sincere intention.
-            It is not limited to one action; it can shape
-            how a person approaches everyday life.
-        `;
-  }
-
-  if (
-    text.includes("gratitude") ||
-    text.includes("grateful") ||
-    text.includes("thankful")
-  ) {
-    return `
-            Gratitude is an important Quranic theme. It involves
-            recognizing blessings, expressing thankfulness and
-            responding to blessings responsibly.
+            The Quran teaches that worship is not limited
+            to rituals. It includes sincere devotion to Allah,
+            prayer, gratitude, obedience, and living according
+            to righteous principles.
         `;
   }
 
   if (text.includes("patience") || text.includes("sabr")) {
     return `
-            Patience, often associated with the Arabic concept
-            of sabr, is repeatedly emphasized in Quranic teaching.
-            It can involve perseverance, restraint and remaining
-            steadfast through difficulty.
+            Patience is an important theme in the Quran.
+            It encourages believers to remain steadfast,
+            especially during difficulties, while trusting
+            in Allah.
         `;
   }
 
-  if (text.includes("quran") || text.includes("teach")) {
+  if (text.includes("gratitude") || text.includes("thank")) {
     return `
-            The Quran addresses many dimensions of spiritual life,
-            including worship, prayer, remembrance, gratitude,
-            patience, character and responsibility toward others.
+            The Quran frequently encourages gratitude.
+            Gratitude can involve recognizing blessings,
+            thanking Allah, and using those blessings
+            responsibly.
         `;
   }
 
   if (text.includes("hello") || text.includes("hi") || text.includes("salam")) {
     return `
             Wa Alaikum Assalam! 🌿
-            How can I help you explore the teachings presented
-            on Quran Delve?
+            What would you like to learn about from the
+            Quran?
+        `;
+  }
+
+  if (text.includes("quran") || text.includes("teach")) {
+    return `
+            The Quran addresses many aspects of human life,
+            including worship, morality, patience, justice,
+            gratitude, compassion, and responsibility.
         `;
   }
 
   return `
         That's an interesting question. 🌿
-
-        I can help you explore topics such as worship,
-        prayer, gratitude, patience, remembrance,
-        character and Quranic reflection.
-
-        Try asking me something like:
-        "What does the Quran teach about patience?"
+        Quran Delve AI can help you explore themes such
+        as worship, patience, gratitude, prayer, morality,
+        and other Quranic teachings.
     `;
 }
 
-// =========================================
-// SEND MESSAGE
-// =========================================
+/* =========================================
+   SEND MESSAGE
+========================================= */
 
 function sendAIMessage() {
-  const message = aiInput.value.trim();
+  const message = aiMessageInput.value.trim();
 
   if (message === "") {
     return;
   }
 
-  // Add user's message
+  /* Show user's message */
 
   addUserMessage(message);
 
-  // Clear input
+  /* Clear input */
 
-  aiInput.value = "";
+  aiMessageInput.value = "";
 
-  // Show typing
+  /* Show loading */
 
   showTyping();
 
-  // Simulate AI response
+  /* Simulate AI thinking */
 
   setTimeout(() => {
     hideTyping();
@@ -463,20 +480,20 @@ function sendAIMessage() {
     const response = generateDemoResponse(message);
 
     addBotMessage(response);
-  }, 1000);
+  }, 1200);
 }
 
-// =========================================
-// SEND BUTTON
-// =========================================
+/* =========================================
+   SEND BUTTON
+========================================= */
 
 aiSendButton.addEventListener("click", sendAIMessage);
 
-// =========================================
-// ENTER KEY
-// =========================================
+/* =========================================
+   ENTER KEY
+========================================= */
 
-aiInput.addEventListener("keydown", (event) => {
+aiMessageInput.addEventListener("keydown", (event) => {
   if (event.key === "Enter") {
     event.preventDefault();
 
@@ -484,25 +501,23 @@ aiInput.addEventListener("keydown", (event) => {
   }
 });
 
-// =========================================
-// SUGGESTION BUTTONS
-// =========================================
-
-const aiSuggestions = document.querySelectorAll(".ai-suggestions button");
+/* =========================================
+   SUGGESTION BUTTONS
+========================================= */
 
 aiSuggestions.forEach((button) => {
   button.addEventListener("click", () => {
-    const question = button.dataset.question;
+    const question = button.textContent.trim();
 
-    aiInput.value = question;
+    aiMessageInput.value = question;
 
     sendAIMessage();
   });
 });
 
-// =========================================
-// SECURITY HELPER
-// =========================================
+/* =========================================
+   SECURITY HELPER
+========================================= */
 
 function escapeHTML(text) {
   const div = document.createElement("div");

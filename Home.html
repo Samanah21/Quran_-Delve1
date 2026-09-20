@@ -795,117 +795,113 @@
         </div>
       </div>
     </div>
-    <!-- ================= AI CHAT ASSISTANT ================= -->
+    <!-- =========================
+     AI CHAT ASSISTANT
+========================= -->
 
     <div class="ai-assistant">
       <!-- Chat Window -->
-
       <div class="ai-chat-window" id="aiChatWindow">
         <!-- Header -->
-
         <div class="ai-chat-header">
-          <div class="ai-profile">
-            <div class="ai-avatar">
-              <i class="bi bi-stars"></i>
-            </div>
+          <div class="ai-bot-info">
+            <div class="ai-bot-avatar">✦</div>
 
             <div>
-              <strong>Quran Delve AI</strong>
-
+              <h6>Quran Delve AI</h6>
               <span>
-                <span class="online-dot"></span>
+                <span class="ai-online-dot"></span>
                 Online
               </span>
             </div>
           </div>
 
-          <button
-            class="ai-minimize"
-            id="aiMinimize"
-            aria-label="Minimize chat"
-          >
-            <i class="bi bi-dash-lg"></i>
-          </button>
+          <div class="ai-chat-actions">
+            <!-- Minimize -->
+            <button
+              type="button"
+              id="aiMinimizeButton"
+              class="ai-header-btn"
+              aria-label="Minimize chat"
+            >
+              −
+            </button>
+
+            <!-- Close -->
+            <button
+              type="button"
+              id="aiCloseButton"
+              class="ai-header-btn"
+              aria-label="Close chat"
+            >
+              ×
+            </button>
+          </div>
         </div>
 
-        <!-- Chat Messages -->
-
+        <!-- Chat Body -->
         <div class="ai-chat-body" id="aiChatBody">
-          <!-- Welcome message -->
+          <div class="ai-message ai-bot-message">
+            <div class="ai-message-avatar">✦</div>
 
-          <div class="ai-message ai-message-bot">
-            <div class="message-avatar">
-              <i class="bi bi-stars"></i>
-            </div>
-
-            <div class="message-content">
-              <p>Assalamu Alaikum! 🌿</p>
+            <div class="ai-message-content">
+              <p>Assalamu Alaikum! 👋</p>
 
               <p>
-                I'm the Quran Delve AI assistant. Ask me about Quranic
-                teachings, worship, reflection, gratitude, patience, or anything
-                related to this learning space.
+                I'm Quran Delve AI. I can help you explore topics related to
+                Quranic teachings and worship.
               </p>
-
-              <span class="message-time"> Just now </span>
             </div>
           </div>
 
-          <!-- Suggested Questions -->
-
+          <!-- Suggestions -->
           <div class="ai-suggestions">
-            <button data-question="What does the Quran teach about worship?">
-              What is worship?
+            <button class="ai-suggestion">
+              What does the Quran teach about worship?
             </button>
 
-            <button data-question="Why is gratitude important in Islam?">
-              Tell me about gratitude
+            <button class="ai-suggestion">
+              What does the Quran say about patience?
             </button>
 
-            <button data-question="What does the Quran teach about patience?">
-              Teach me about patience
-            </button>
+            <button class="ai-suggestion">How can I practice gratitude?</button>
           </div>
         </div>
 
         <!-- Typing Indicator -->
-
         <div class="ai-typing" id="aiTyping">
           <span></span>
           <span></span>
           <span></span>
-
-          <small>Quran Delve AI is thinking...</small>
         </div>
 
-        <!-- Input -->
-
-        <div class="ai-chat-input-area">
+        <!-- Input Area -->
+        <div class="ai-input-area">
           <input
             type="text"
             id="aiMessageInput"
-            placeholder="Ask something..."
+            placeholder="Ask Quran Delve AI..."
             autocomplete="off"
           />
 
-          <button id="aiSendButton" aria-label="Send message">
-            <i class="bi bi-arrow-up"></i>
+          <button type="button" id="aiSendButton" aria-label="Send message">
+            ➤
           </button>
         </div>
 
-        <div class="ai-powered">Quran Delve AI • Learning assistant</div>
+        <div class="ai-chat-footer">Quran Delve AI • Learning assistant</div>
       </div>
 
       <!-- Floating Button -->
-
       <button
-        class="ai-floating-button"
+        type="button"
         id="aiFloatingButton"
-        aria-label="Open AI assistant"
+        class="ai-floating-button"
+        aria-label="Open Quran Delve AI"
       >
-        <i class="bi bi-stars"></i>
+        <span class="ai-floating-icon">✦</span>
 
-        <span class="ai-pulse"></span>
+        <span class="ai-floating-dot"></span>
       </button>
     </div>
 
