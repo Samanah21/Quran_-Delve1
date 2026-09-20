@@ -795,6 +795,119 @@
         </div>
       </div>
     </div>
+    <!-- ================= AI CHAT ASSISTANT ================= -->
+
+    <div class="ai-assistant">
+      <!-- Chat Window -->
+
+      <div class="ai-chat-window" id="aiChatWindow">
+        <!-- Header -->
+
+        <div class="ai-chat-header">
+          <div class="ai-profile">
+            <div class="ai-avatar">
+              <i class="bi bi-stars"></i>
+            </div>
+
+            <div>
+              <strong>Quran Delve AI</strong>
+
+              <span>
+                <span class="online-dot"></span>
+                Online
+              </span>
+            </div>
+          </div>
+
+          <button
+            class="ai-minimize"
+            id="aiMinimize"
+            aria-label="Minimize chat"
+          >
+            <i class="bi bi-dash-lg"></i>
+          </button>
+        </div>
+
+        <!-- Chat Messages -->
+
+        <div class="ai-chat-body" id="aiChatBody">
+          <!-- Welcome message -->
+
+          <div class="ai-message ai-message-bot">
+            <div class="message-avatar">
+              <i class="bi bi-stars"></i>
+            </div>
+
+            <div class="message-content">
+              <p>Assalamu Alaikum! 🌿</p>
+
+              <p>
+                I'm the Quran Delve AI assistant. Ask me about Quranic
+                teachings, worship, reflection, gratitude, patience, or anything
+                related to this learning space.
+              </p>
+
+              <span class="message-time"> Just now </span>
+            </div>
+          </div>
+
+          <!-- Suggested Questions -->
+
+          <div class="ai-suggestions">
+            <button data-question="What does the Quran teach about worship?">
+              What is worship?
+            </button>
+
+            <button data-question="Why is gratitude important in Islam?">
+              Tell me about gratitude
+            </button>
+
+            <button data-question="What does the Quran teach about patience?">
+              Teach me about patience
+            </button>
+          </div>
+        </div>
+
+        <!-- Typing Indicator -->
+
+        <div class="ai-typing" id="aiTyping">
+          <span></span>
+          <span></span>
+          <span></span>
+
+          <small>Quran Delve AI is thinking...</small>
+        </div>
+
+        <!-- Input -->
+
+        <div class="ai-chat-input-area">
+          <input
+            type="text"
+            id="aiMessageInput"
+            placeholder="Ask something..."
+            autocomplete="off"
+          />
+
+          <button id="aiSendButton" aria-label="Send message">
+            <i class="bi bi-arrow-up"></i>
+          </button>
+        </div>
+
+        <div class="ai-powered">Quran Delve AI • Learning assistant</div>
+      </div>
+
+      <!-- Floating Button -->
+
+      <button
+        class="ai-floating-button"
+        id="aiFloatingButton"
+        aria-label="Open AI assistant"
+      >
+        <i class="bi bi-stars"></i>
+
+        <span class="ai-pulse"></span>
+      </button>
+    </div>
 
     <!-- ================= BOOTSTRAP JS ================= -->
 
